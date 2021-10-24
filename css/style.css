@@ -4,7 +4,7 @@
 * { box-sizing: border-box; }
 
 body {
-   height: 100vh;
+   /* height: 100vh; */
    margin: 0;
 
    display: flex;
@@ -19,11 +19,12 @@ body {
 	font-family: 'Lato';
 }
 
-h1 { letter-spacing: 3px; }
+h1 { letter-spacing: 2px; }
 
 .poke-container {
    max-width: 1200px;
    margin: 0 auto;
+	margin-bottom: 40px;
 
 	display: flex;
 	flex-wrap: wrap;
@@ -32,14 +33,28 @@ h1 { letter-spacing: 3px; }
 }
 
 .pokemon {
-	padding: 20px;
+	min-width: 200px;
+	padding: 20px 20px 18px;
    margin: 10px;
 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
 	background-color: #eee;
+	/* text-align: center; */
+	/* background-image: linear-gradient(160deg, #ffe2f8, #e7f9ff); */
 	border-radius: 20px;
 	box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
 
 	text-align: center;
+	transition: all .5s;
+}
+
+.pokemon:hover {
+	transform: translateY(-10px);
+	transition: all .5s;
 }
 
 .pokemon .img-container {
@@ -50,26 +65,45 @@ h1 { letter-spacing: 3px; }
    border-radius: 50%;
    
    text-align: center;
+	transition: all .4s;
+}
+
+.pokemon:hover .img-container {
+	transform: scale(1.65) translateY(-18px);
+	background-color: rgba(255, 255, 255, .96);
+	transition: all .4s;
 }
 
 .pokemon .img-container img {
-   max-width: 90%;
-	margin-top: 20px;
+   max-width: 75%;
+	margin-top: 14px;
 }
 
-.pokemon .info { margin-top: 20px; }
+.pokemon .info { margin-top: 14px; }
+
+.pokemon:hover .info { margin-top: -120px; }
 
 .pokemon .number {
+	color: #444;
    padding: 5px 10px;
 
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: #fff;
 	border-radius: 10px;
 
-	font-size: 0.8em;
+	font-size: 0.7em;
+	font-weight: 700;
+	letter-spacing: 1px;
 }
 
 .pokemon .name {
-	margin: 15px 0 7px;
+	font-size: 13px;
+	margin: 12px 0 0px;
+	letter-spacing: 1px;
+}
+
+.pokemon .type {
+	font-size: 11px;
+	font-weight: 600;
 	letter-spacing: 1px;
 }
 
@@ -122,24 +156,25 @@ h1 { letter-spacing: 3px; }
 .social-panel button.close-btn:focus { outline: none; }
 
 .social-panel p {
-	background-color: #001F61;
-	border-radius: 0 0 10px 10px;
-	color: #fff;
-	font-size: 14px;
-	line-height: 18px;
-	padding: 2px 17px 6px;
 	position: absolute;
 	top: 0;
 	left: 50%;
-	margin: 0;
 	transform: translateX(-50%);
-	text-align: center;
+
 	width: 235px;
+	padding: 2px 17px 6px;
+	margin: 0;
+
+	background-color: #001F61;
+	border-radius: 0 0 10px 10px;
+
+	color: #fff;
+	font-size: 14px;
+	line-height: 18px;
+	text-align: center;
 }
 
-.social-panel p i {
-	margin: 0 5px;
-}
+.social-panel p i { margin: 0 5px; }
 
 .social-panel p a {
 	color: #FF7500;
@@ -148,6 +183,7 @@ h1 { letter-spacing: 3px; }
 
 .social-panel h4 {
 	margin: 20px 0;
+
 	color: #97A5CE;	
 	font-family: 'Muli';	
 	font-size: 14px;	
@@ -156,26 +192,29 @@ h1 { letter-spacing: 3px; }
 }
 
 .social-panel ul {
-	display: flex;
-	list-style-type: none;
 	padding: 0;
 	margin: 0;
+
+	display: flex;
+
+	list-style-type: none;
 }
 
-.social-panel ul li {
-	margin: 0 10px;
-}
+.social-panel ul li { margin: 0 10px; }
 
 .social-panel ul li a {
-	border: 1px solid #DCE1F2;
-	border-radius: 50%;
-	color: #001F61;
-	font-size: 20px;
+	height: 50px;
+	width: 50px;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 50px;
-	width: 50px;
+	
+	border: 1px solid #DCE1F2;
+	border-radius: 50%;
+	
+	color: #001F61;
+	font-size: 20px;
 	text-decoration: none;
 }
 
@@ -185,19 +224,24 @@ h1 { letter-spacing: 3px; }
 }
 
 .floating-btn {
+	z-index: 999;
+
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+
+	padding: 12px 20px;
+
 	border-radius: 26.5px;
 	background-color: #001F61;
 	border: 1px solid #001F61;
 	box-shadow: 0 16px 22px -17px #03153B;
+	
 	color: #fff;
 	cursor: pointer;
 	font-size: 16px;
 	line-height: 20px;
-	padding: 12px 20px;
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	z-index: 999;
+	
 }
 
 .floating-btn:hover {
@@ -205,20 +249,22 @@ h1 { letter-spacing: 3px; }
 	color: #001F61;
 }
 
-.floating-btn:focus {
-	outline: none;
-}
+.floating-btn:focus { outline: none; }
 
 .floating-text {
-	background-color: #001F61;
-	border-radius: 10px 10px 0 0;
-	color: #fff;
-	font-family: 'Muli';
-	padding: 7px 15px;
 	position: fixed;
 	bottom: 0;
 	left: 50%;
+
 	transform: translateX(-50%);
+
+	padding: 7px 15px;
+
+	background-color: #001F61;
+	border-radius: 10px 10px 0 0;
+
+	color: #fff;
+	font-family: 'Muli';
 }
 
 .floating-text a {
@@ -227,12 +273,7 @@ h1 { letter-spacing: 3px; }
 }
 
 @media screen and (max-width: 480px) {
-
-	.social-panel-container.visible {
-		transform: translateX(0px);
-	}
+	.social-panel-container.visible { transform: translateX(0px); }
 	
-	.floating-btn {
-		right: 10px;
-	}
+	.floating-btn { right: 10px; }
 }
